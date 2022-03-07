@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width">
+  <title>手みやげ図鑑</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="icon" href="img/favicon.ico">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <!--ヘッダー-->
+  <header>
+    <h1><a href="index.html"><img src="img/nav_logo.png" style="width: 200px;" alt="手みやげ図鑑"></a></h1>
+    <nav class="nav_menu">
+      <ul>
+        <li>
+          <a href="want.html">
+            <button type="button" class="btn btn-outline-danger">Wish List</button></a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!--メインビジュアル-->
+  <div id="carouselControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="img/main_visual1_pc.png" class="d-block w-100" alt="Image 1">
+      </div>
+      <div class="carousel-item">
+        <img src="img/main_visual2_pc.png" class="d-block w-100" alt="Image 2">
+      </div>
+      <div class="carousel-item">
+        <img src="img/main_visual3_pc.png" class="d-block w-100" alt="Image 3">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!--wrapper-->
+  <div id="wrapper">
+    <div id="main">
+        <ul class="wish-list list-unstyled">
+          <wish-list
+            v-for="gift in gifts"
+            :key="gift.id"
+            :gift="gift"
+            @toggle-wish="onToggleWish"
+          >
+          </wish-list>
+        </ul>
+    </div>
+    <!--<div class="grid">-->
+    <!--  <div class="grid-item">-->
+    <!--    <div class="card">-->
+    <!--      <img src="img/harada_rusk.png" class="goods-img" alt="ガトーフェスタハラダ">-->
+    <!--      <div class="card-body">-->
+    <!--        <div class="card-text">-->
+    <!--          <div class="text">-->
+    <!--            <p class="goods_name">グーテ・デ・ロワ 18袋</p>-->
+    <!--            <p class="price">1,620円</p>-->
+    <!--            <p class="shop_name">ガトーフェスタハラダ</p>-->
+    <!--          </div>-->
+    <!--          <p><i class="fa-regular fa-heart"></i></p>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <!--  </div>-->
+
+    <!--  <div class="grid-item">-->
+    <!--    <div class="card">-->
+    <!--      <img src="img/imoyakinnjirou.png" class="goods-img" alt="芋屋金次郎">-->
+    <!--      <div class="card-body">-->
+    <!--        <div class="card-text">-->
+    <!--          <div class="text">-->
+    <!--            <p class="goods_name">芋けんぴ 小袋寄せ</p>-->
+    <!--            <p class="price">3,300円</p>-->
+    <!--            <p class="shop_name">芋屋金次郎</p>-->
+    <!--          </div>-->
+    <!--          <p><i class="fa-regular fa-heart"></i></p>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <!--  </div>-->
+
+    <!--  <div class="grid-item">-->
+    <!--    <div class="card">-->
+    <!--      <img src="img/yokohama_renga.png" class="goods-img" alt="横濱煉瓦">-->
+    <!--      <div class="card-body">-->
+    <!--        <div class="card-text">-->
+    <!--          <div class="text">-->
+    <!--            <p class="goods_name">横濱煉瓦 12個入</p>-->
+    <!--            <p class="price">3,348円</p>-->
+    <!--            <p class="shop_name">横濱元町 霧笛楼</p>-->
+    <!--          </div>-->
+    <!--          <p><i class="fa-regular fa-heart"></i></p>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <!--  </div>-->
+
+    <!--  <div class="grid-item">-->
+    <!--    <div class="card">-->
+    <!--      <img src="img/kurumikko.png" class="goods-img" alt="クルミッ子">-->
+    <!--      <div class="card-body">-->
+    <!--        <div class="card-text">-->
+    <!--          <div class="text">-->
+    <!--            <p class="goods_name">クルミッ子 16個入</p>-->
+    <!--            <p class="price">2,333円</p>-->
+    <!--            <p class="shop_name">鎌倉紅谷</p>-->
+    <!--          </div>-->
+    <!--          <p><i class="fa-regular fa-heart"></i></p>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <!--  </div>-->
+
+    <!--  <div class="grid-item">-->
+    <!--    <div class="card">-->
+    <!--      <img src="img/siroebi_senbei.jpg" class="goods-img" alt="白えびせんべい">-->
+    <!--      <div class="card-body">-->
+    <!--        <div class="card-text">-->
+    <!--          <div class="text">-->
+    <!--            <p class="goods_name">白えび紅白寿せんべいセット</p>-->
+    <!--            <p class="price">2,592円</p>-->
+    <!--            <p class="shop_name">富山吟撰堂</p>-->
+    <!--          </div>-->
+    <!--          <p><i class="fa-regular fa-heart"></i></p>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <!--  </div>-->
+
+    <!--  <div class="grid-item">-->
+    <!--    <div class="card">-->
+    <!--      <img src="img/montblanc.png" class="goods-img" alt="焼きモンブラン">-->
+    <!--      <div class="card-body">-->
+    <!--        <div class="card-text">-->
+    <!--          <div class="text">-->
+    <!--            <p class="goods_name">焼きモンブラン 10個入</p>-->
+    <!--            <p class="price">3,157円</p>-->
+    <!--            <p class="shop_name">Gaspard ZinZin</p>-->
+    <!--          </div>-->
+    <!--          <p><i class="fa-regular fa-heart"></i></p>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <!--  </div>-->
+
+    <!--  <div class="grid-item">-->
+    <!--    <div class="card">-->
+    <!--      <img src="img/juuwari_soba.png" class="goods-img" alt="国産十割そば">-->
+    <!--      <div class="card-body">-->
+    <!--        <div class="card-text">-->
+    <!--          <div class="text">-->
+    <!--            <p class="goods_name">国産十割そば 6食入</p>-->
+    <!--            <p class="price">4,300円</p>-->
+    <!--            <p class="shop_name">掌庵 蕎麦 石はら</p>-->
+    <!--          </div>-->
+    <!--          <p><i class="fa-regular fa-heart"></i></p>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <!--  </div>-->
+    <!--</div>-->
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>

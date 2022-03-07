@@ -1,0 +1,93 @@
+@charset "UTF-8";
+
+/*全体の設定*/
+body {
+    margin: 0;
+    padding: 0;
+    color: #333;
+    font-size: 16px;
+}
+
+a, a:visited, a:hover {
+    color: #333;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    margin-top: 0;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/*ヘッダー*/
+header {
+  width: 768px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav_menu ul {
+  list-style: none;
+}
+
+.btn {
+  margin-top: 10px;
+}
+
+
+/*wrapper*/
+#wrapper {
+  width: 768px;
+  margin: auto;
+}
+
+.carousel {
+  margin-bottom: 30px;
+}
+
+/*グリッド*/
+.grid-item {
+  width: 240px;
+  margin-bottom: 14px;
+}
+
+.card-text {
+  display: flex;
+  justify-content: space-between;
+}
+
+.text p {
+  margin: 0;
+  padding: 0;
+}
+
+.goods_name {
+  font-weight: bold;
+}
+
+.shop_name {
+  color: gray;
+  font-size: 12px;
+}
+
+.fa-heart {
+  margin-top: 16px;
+  padding: 0;
+  font-size: 24px;
+  color: lightgray;
+}
+
+.fa-heart:hover {
+  color: 	#f4506d;
+}
+
+
+/*WishList*/
+.wish-title {
+  color: #333;
+  margin-top: 20px;
+}
